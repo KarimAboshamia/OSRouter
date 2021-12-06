@@ -6,6 +6,7 @@ package my_RouterInterface;
 public class RouterInterface extends javax.swing.JFrame {
 
     int numOfRouterConnections, numOfDevices;
+    
     public RouterInterface() {
         initComponents();
     }
@@ -150,8 +151,8 @@ public class RouterInterface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String text = jTextArea1.getText();
-        String[] devicesNames = text.split(" ");  
-        Router myRouter = new Router(numOfRouterConnections, numOfDevices);
+        String[] devicesNames = text.split("\\n");  
+        Router myRouter = new Router(numOfRouterConnections, numOfDevices, devicesNames);
     }//GEN-LAST:event_jButton2ActionPerformed
 
    

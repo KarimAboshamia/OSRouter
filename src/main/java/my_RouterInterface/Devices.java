@@ -1,17 +1,10 @@
 package my_RouterInterface;
 
-enum States
-{
-	connected,
-	waiting,
-	disconnected
-}
-
-
 public class Devices extends Thread {
-    String Device_Name;
-    String Device_Type;
-    States State = States.disconnected;
+    private String Device_Name;
+    private String Device_Type;
+    private Semaphore devSemaphore;
+    public static Router sharedRouter;
     Devices(String name, String type)
     {
     	Device_Name= name;
@@ -24,19 +17,21 @@ public class Devices extends Thread {
     	//after being all connected, logout
     	disconnect();
     }
-    private void connect()
+    public void connect()
     {
+        devSemaphore.P(this);
     	System.out.println(this.Device_Name+ "login");
     }
     
-    private void activity()
+    public void activity()
     {
     	System.out.println(this.Device_Name + "Performs online activity");
 
     }
     
-    private void disconnect()
+    public void disconnect()
     {
+        devSemaphore.V(this);
     	System.out.println(this.Device_Name+ "Logout");
     }
 }

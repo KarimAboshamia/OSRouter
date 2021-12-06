@@ -3,7 +3,7 @@ package my_RouterInterface;
 class Semaphore {
 
 	protected int connections = 0;
-
+        Devices dev;
 	protected Semaphore() {
 		connections = 0;
 	}
@@ -11,21 +11,22 @@ class Semaphore {
 	protected Semaphore(int initial) {
 		connections = initial;
 	}
-	public void setValue(int connections)
-	{
-		this.connections = connections;
+
+	public synchronized void P(Devices dev) {
+            connections--;
+            if (connections < 0)
+            {
+                try 
+                {
+                    wait();//arrived
+                } catch (InterruptedException e) 
+                {
+                    //arrived and waiting
+                }
+            }
 	}
 
-	public synchronized void P() {
-		connections--;
-		if (connections < 0)
-			try {
-				wait();
-			} catch (InterruptedException e) {
-			}
-	}
-
-	public synchronized void V() {
+	public synchronized void V(Devices dev) {
 		connections++;
 		if (connections <= 0)
 			notify();

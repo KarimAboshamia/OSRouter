@@ -1,4 +1,4 @@
-package my_RouterInterface;
+/*package my_RouterInterface;
 
 import java.util.Scanner;
 
@@ -15,4 +15,4 @@ public class Network {
 
 	}
 
-}
+}*/
