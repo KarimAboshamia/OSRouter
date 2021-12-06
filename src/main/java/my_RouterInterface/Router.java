@@ -1,18 +1,20 @@
 
-package my.RouterInterface;
-import java.util.ArrayList; 
+package my_RouterInterface;
 
-
+import java.util.ArrayList;
 public class Router 
 {
-   
-    ArrayList<Devices> listOfDevices = new ArrayList<Devices>();
-    int numberOfConnections;
-    int numberOfDevices;
+    Devices devices[];
+    Semaphore connections;
+    int numberOfConnections=0;
+    int numberOfDevices; 
+    
     public Router(int num1, int num2)
     {
             numberOfConnections = num1;
             numberOfDevices = num2;
+        	devices= new Devices[numberOfDevices]; 
+        	connections= new Semaphore(num1);
     }
     
     public void occupy(Devices dev)
