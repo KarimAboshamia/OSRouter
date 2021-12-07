@@ -12,7 +12,7 @@ class Semaphore {
 		connections = initial;
 	}
 
-	public synchronized void P(Devices dev) {
+	public synchronized void P() {
             connections--;
             if (connections < 0)
             {
@@ -26,7 +26,7 @@ class Semaphore {
             }
 	}
 
-	public synchronized void V(Devices dev) {
+	public synchronized void V() {
 		connections++;
 		if (connections <= 0)
 			notify();
