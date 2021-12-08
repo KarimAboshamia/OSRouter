@@ -1,4 +1,6 @@
 package my_RouterInterface;
+import java.io.FileWriter;
+import static my_RouterInterface.RouterInterface.Output;
 
 class Semaphore {
 
@@ -12,21 +14,28 @@ class Semaphore {
 		connections = initial;
 	}
 
-	public synchronized void P(Devices dev) {
+	public synchronized void P(Devices dev)throws Exception {
             connections--;
             if (connections < 0)
             {
                 try 
                 {
-                    System.out.println(dev.getDevName() + "Arrived and waiting");
+                    //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
+                    System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting");
+                    Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
                     wait();//arrived
                 } catch (InterruptedException e) 
                 {
-                    //arrived and waiting
+                    //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+                    System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
+                    Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+                    //arrived
                 }
             }
-            System.out.println(dev.getDevName() + "Arrived");
-	}
+            //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+            System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
+            Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+        }
 
 	public synchronized void V() {
 		connections++;

@@ -1,5 +1,15 @@
 package my_RouterInterface;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextArea;
+
 
 
 
@@ -15,62 +25,62 @@ public class RouterInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        submitBtn = new javax.swing.JButton();
+        routerConnectionTxt = new javax.swing.JTextField();
+        routerConnectionsLbl = new javax.swing.JLabel();
+        clientsLbl = new javax.swing.JLabel();
+        clientsTxt = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Input = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        Output = new javax.swing.JTextArea();
+        outputLbl = new javax.swing.JLabel();
+        devicesNamesLbl = new javax.swing.JLabel();
+        inputSubmitBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Router Interface");
         setName("routerName"); // NOI18N
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        submitBtn.setText("Submit");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                submitBtnActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        routerConnectionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                routerConnectionTxtActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Router Connections");
+        routerConnectionsLbl.setText("Router Connections");
 
-        jLabel2.setText("Clients");
+        clientsLbl.setText("Clients");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        clientsTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                clientsTxtActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        Input.setColumns(20);
+        Input.setRows(5);
+        jScrollPane1.setViewportView(Input);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        Output.setColumns(20);
+        Output.setRows(5);
+        jScrollPane2.setViewportView(Output);
 
-        jLabel3.setText("Output");
+        outputLbl.setText("Output");
 
-        jLabel4.setText("Devices Names");
+        devicesNamesLbl.setText("Devices Names");
 
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        inputSubmitBtn.setText("OK");
+        inputSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                inputSubmitBtnActionPerformed(evt);
             }
         });
 
@@ -87,26 +97,26 @@ public class RouterInterface extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(routerConnectionsLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(routerConnectionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(clientsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(clientsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel4)
+                        .addComponent(devicesNamesLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
+                        .addComponent(outputLbl)))
                 .addGap(166, 166, 166))
         );
         layout.setVerticalGroup(
@@ -114,17 +124,17 @@ public class RouterInterface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(routerConnectionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(routerConnectionsLbl)
+                    .addComponent(clientsLbl)
+                    .addComponent(clientsTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(submitBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outputLbl)
+                    .addComponent(devicesNamesLbl)
+                    .addComponent(inputSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
@@ -135,28 +145,32 @@ public class RouterInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void routerConnectionTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routerConnectionTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_routerConnectionTxtActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void clientsTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_clientsTxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         
-        numOfRouterConnections = Integer.parseInt(jTextField1.getText());
-        numOfDevices = Integer.parseInt(jTextField2.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+        numOfRouterConnections = Integer.parseInt(routerConnectionTxt.getText());
+        numOfDevices = Integer.parseInt(clientsTxt.getText());
+    }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String text = jTextArea1.getText();
+    private void inputSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSubmitBtnActionPerformed
+        String text = Input.getText();
         String[] devicesNames = text.split("\\n");  
-        Router myRouter = new Router(numOfRouterConnections, numOfDevices, devicesNames);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        try {
+            Router myRouter = new Router(numOfRouterConnections, numOfDevices, devicesNames);
+        } catch (Exception ex) {
+            Logger.getLogger(RouterInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_inputSubmitBtnActionPerformed
 
    
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -185,21 +199,31 @@ public class RouterInterface extends javax.swing.JFrame {
             public void run() {
                 new RouterInterface().setVisible(true);
             }
-        });
+        }); 
+        File file = new File("Output.txt");
+        PrintStream stream = new PrintStream(file);
+        /*PrintStream out = new PrintStream(new OutputStream() {
+        @Override
+            public void write(int b) throws IOException {
+                str = String.valueOf((char)b);   
+            } 
+        });*/
+        
+        System.setOut(stream);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextArea Input;
+    public static javax.swing.JTextArea Output;
+    private javax.swing.JLabel clientsLbl;
+    private javax.swing.JTextField clientsTxt;
+    private javax.swing.JLabel devicesNamesLbl;
+    private javax.swing.JButton inputSubmitBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel outputLbl;
+    private javax.swing.JTextField routerConnectionTxt;
+    private javax.swing.JLabel routerConnectionsLbl;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }
