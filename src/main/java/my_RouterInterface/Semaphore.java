@@ -6,35 +6,42 @@ class Semaphore {
 
 	protected int connections = 0;
         Devices dev;
+        int temp;
 	protected Semaphore() {
 		connections = 0;
 	}
 
 	protected Semaphore(int initial) {
 		connections = initial;
+                temp = initial;
 	}
 
 	public synchronized void P(Devices dev)throws Exception {
+            
             connections--;
+            dev.setConnection(temp - connections);
             if (connections < 0)
             {
                 try 
                 {
-                    //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
                     System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting");
                     Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
-                    wait();//arrived
+                    wait();
                 } catch (InterruptedException e) 
                 {
-                    //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
-                    System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
-                    Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
-                    //arrived
+                    System.out.println("Exception in waiting");
+                    Output.append("Exception in waiting");
                 }
             }
-            //file.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
-            System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
-            Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+            if(dev.getConnectionNumber() <= temp)
+            {
+                System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
+                Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
+            }
+            else
+            {
+                dev.setConnection(temp - connections);
+            }
         }
 
 	public synchronized void V() {

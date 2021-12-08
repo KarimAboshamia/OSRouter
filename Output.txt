@@ -1,0 +1,10 @@
+(ac) (pc) arrived
+Connection 1: ac occupied
+Connection 1: ac login
+Connection 1: ac Performs online activity
+Connection 1: ac Logout
+(an) (ad) arrived and waiting
+Connection 0: an occupied
+Connection 0: an login
+Connection 0: an Performs online activity
+Connection 0: an Logout

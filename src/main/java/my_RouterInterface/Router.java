@@ -19,12 +19,11 @@ public class Router
     
     public Router(int num1, int num2, String devNames[])throws Exception
     {
-        //file = new FileWriter("Output.txt");
         numberOfConnections = num1;
         numberOfDevices = num2;
         devSemaphore = new Semaphore(numberOfConnections);
         out = new JTextField();
-        for(int i = 0; i < numberOfDevices; i++)
+        for(int i = 0; i < devNames.length; i++)
         {
             String [] temp = devNames[i].split(" ");
             Devices dev = new Devices(temp[0], temp[1], this, devSemaphore);
@@ -34,9 +33,8 @@ public class Router
     }
     
     public void occupy(Devices dev)throws Exception {
-        System.out.println("Connection " + (devSemaphore.connections + 1) + ": " + dev.getDevName() + " occupied");
-        Output.append("Connection " + (devSemaphore.connections + 1) + ": " + dev.getDevName() + " occupied\n");
-        //out.write(file);
+        System.out.println("Connection "+ dev.getConnectionNumber() + ": " + dev.getDevName() + " occupied");
+        Output.append("Connection "+ dev.getConnectionNumber() + ": " + dev.getDevName() + " occupied\n");
     }
     
     public void release()

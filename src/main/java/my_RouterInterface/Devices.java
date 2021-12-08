@@ -8,6 +8,7 @@ public class Devices extends Thread {
     private String Device_Name;
     private String Device_Type;
     public static Router sharedRouter;
+    private int connectionNumber;
     static Semaphore objSem;
     Devices(String name, String type, Router obj, Semaphore objS)
     {
@@ -16,6 +17,10 @@ public class Devices extends Thread {
         sharedRouter = obj;
         objSem = objS;
         
+    }
+    public void setConnection(int connection)
+    {
+        connectionNumber = connection;
     }
     public String getDevName()
     {
@@ -29,20 +34,27 @@ public class Devices extends Thread {
     
     public void connect()
     {
-    	System.out.println(this.Device_Name+ " login");
-        Output.append(" login");
+    	System.out.println("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login");
+        Output.append("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login \n");
     }
     
     public void activity()
     {
-    	System.out.println(this.Device_Name + " Performs online activity");
-
+    	System.out.println("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity");
+        Output.append("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity \n");
+        
     }
     
     public void disconnect()
     {
-    	System.out.println(this.Device_Name+ " Logout");
+    	System.out.println("Connection "+ connectionNumber + ": " + this.Device_Name+ " Logout");
+        Output.append("Connection "+ connectionNumber + ": " + this.Device_Name+ " Logout \n");
         sharedRouter.release();
+    }
+    
+    public int getConnectionNumber()
+    {
+        return connectionNumber;
     }
     
     @Override
@@ -56,7 +68,6 @@ public class Devices extends Thread {
         }
     	connect();
     	activity();
-    	//after being all connected, logout
     	disconnect();
         sharedRouter.release();
     }

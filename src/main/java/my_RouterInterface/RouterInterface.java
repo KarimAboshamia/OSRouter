@@ -41,6 +41,7 @@ public class RouterInterface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Router Interface");
         setName("routerName"); // NOI18N
+        setResizable(false);
 
         submitBtn.setText("Submit");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
