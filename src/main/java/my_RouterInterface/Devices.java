@@ -19,6 +19,16 @@ public class Devices extends Thread {
         //objSem = objS;
         
     }
+    static boolean available = true; 
+    public void acquire()
+    {
+    	while(!available);
+    	available = false;
+    }
+    public void release()
+    {
+    	available = true;
+    }
     public void setConnection(int connection)
     {
         connectionNumber = connection;
@@ -41,20 +51,26 @@ public class Devices extends Thread {
     public void connect() throws Exception
     {
     	System.out.println("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login");
+    	acquire();
         Output.append("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login\n");
+        release();
     }
     
     public void activity()
     {
-    	System.out.println("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity"); 
+    	System.out.println("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity");
+    	acquire();
         Output.append("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity\n");
+        release();
     }
     
     public void disconnect()
     {
         //sharedRouter.connections.V();
     	System.out.println("Connection "+ connectionNumber + ": " + this.Device_Name+ " logout");
+    	acquire();
         Output.append("Connection "+ connectionNumber + ": " + this.Device_Name+ " logout\n");
+        release();
         sharedRouter.release(this);
     }
     

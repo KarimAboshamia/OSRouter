@@ -14,6 +14,16 @@ class Semaphore {
 	protected Semaphore(int initial) {
 		connections = initial;
 	}
+        static boolean available = true;
+	public void acquire()
+        {
+            while(!available);
+            available = false;
+        }
+        public void release()
+        {
+            available = true;
+        }
 
 	public synchronized void P(Devices dev)throws Exception {
             connections--;
@@ -22,7 +32,9 @@ class Semaphore {
                 try 
                 {
                     System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting");
+                    acquire();
                     Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
+                    release();
                     wait();
                 } catch (InterruptedException e) 
                 {

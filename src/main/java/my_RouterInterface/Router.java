@@ -21,7 +21,16 @@ public class Router
         connections = new Semaphore(num1);
         numberOfConnections = num1;
     }
-    
+    static boolean available = true;
+    public void acquire()
+    {
+    	while(!available);
+    	available = false;
+    }
+    public void release()
+    {
+    	available = true;
+    }
     public int occupy(Devices dev)throws Exception {
         connections.P(dev);
         int i = 0;
@@ -29,13 +38,14 @@ public class Router
             if(devN[i] == null){
                 devN[i] = dev;
                 System.out.println("Connection "+ (i + 1) + ": " + dev.getDevName() + " occupied");
+                acquire();
                 Output.append("Connection "+ (i + 1) + ": " + dev.getDevName() + " occupied\n");
+                release();
                 return (i+1);
             }
         }
         return 0;
     }
-    
     public void release(Devices dev)
     {
        connections.V();

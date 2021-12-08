@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 
 
@@ -165,8 +166,18 @@ public class RouterInterface extends javax.swing.JFrame {
         String text = Input.getText();
         String[] devicesNames = text.split("\\n");  
         try {
-            Network network = new Network(numOfRouterConnections, numOfDevices, devicesNames);
-            //Router myRouter = new Router(numOfRouterConnections, numOfDevices, devicesNames);
+            //Network network = new Network(numOfRouterConnections, numOfDevices, devicesNames);
+            Router mainRouter = new Router(numOfRouterConnections);
+            Devices buffer[] = new Devices[numOfDevices];
+            JTextField out = new JTextField();
+            for(int i = 0; i < devicesNames.length; i++)
+            {
+                String [] temp = devicesNames[i].split(" ");
+                Devices dev = new Devices(temp[0], temp[1], mainRouter);
+                buffer[i] = dev;
+                dev.start();
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(RouterInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
