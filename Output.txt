@@ -1,16 +1,20 @@
-(ac) (pc) arrived
-Connection 1: ac occupied
-Connection 1: ac login
-Connection 1: ac Performs online activity
-Connection 1: ac Logout
-(ad) (ad) arrived
-Connection 2: ad occupied
-Connection 2: ad login
-Connection 2: ad Performs online activity
-Connection 2: ad Logout
-(ae) (ae) arrived and waiting
-Connection -1: ae occupied
-Connection -1: ae login
-Connection -1: ae Performs online activity
-Connection -1: ae Logout
-Done
+(C1) (mobile) arrived
+(C4) (pc) arrived
+(C2) (tablet) arrived and waiting
+(C3) (pc) arrived and waiting
+Connection 2: C4 occupied
+Connection 1: C1 occupied
+Connection 2: C4 login
+Connection 1: C1 login
+Connection 2: C4 Performs online activity
+Connection 1: C1 Performs online activity
+Connection 2: C4 logout
+Connection 1: C1 logout
+Connection 2: C2 occupied
+Connection 1: C3 occupied
+Connection 2: C2 login
+Connection 1: C3 login
+Connection 1: C3 Performs online activity
+Connection 2: C2 Performs online activity
+Connection 1: C3 logout
+Connection 2: C2 logout

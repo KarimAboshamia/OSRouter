@@ -1,18 +1,25 @@
-/*package my_RouterInterface;
+package my_RouterInterface;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JTextField;
 
 public class Network {
-	public static void main(String[] args) {
-		Router my_router;
-		System.out.println("Number of connections");
-		try (Scanner input = new Scanner(System.in)) {
-			int connectionNum = input.nextInt();
-			System.out.println("Number of devices");
-			int deviceNum = input.nextInt();
-			my_router = new Router(connectionNum, deviceNum);
-		}
+    
+    Router mainRouter;
+    
+    Network(int numOfRouterConnections, int numOfDevices, String[] devicesNames) throws Exception {
+           
+	mainRouter = new Router(numOfRouterConnections);
+        Devices buffer[] = new Devices[numOfDevices];
+        JTextField out = new JTextField();
+        for(int i = 0; i < devicesNames.length; i++)
+        {
+            String [] temp = devicesNames[i].split(" ");
+            Devices dev = new Devices(temp[0], temp[1], mainRouter);
+            buffer[i] = dev;
+            dev.start();
+        }
+    }
 
-	}
-
-}*/
+}

@@ -3,46 +3,46 @@ package my_RouterInterface;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
-import javax.swing.JTextField;
+import java.util.Arrays;
+//import javax.swing.JTextField;
 import static my_RouterInterface.RouterInterface.Output;
 public class Router 
 {
-    ArrayList<Devices> devN = new ArrayList<Devices>(); // Create an ArrayList object
-    String devNames[];
+    Devices devN[]; // Create an ArrayList object
     Semaphore connections;
-    static int dev = 0;
-    int numberOfConnections=0;
-    static private Semaphore devSemaphore;
+    int numberOfConnections;
     int numberOfDevices; 
-    FileWriter file;
-    JTextField out;
-    int counter = 0;
+    int counter;
     
-    public Router(int num1, int num2, String devNames[])throws Exception
+    public Router(int num1)throws Exception
     {
+        devN = new Devices[num1];
+        Arrays.fill(devN, null);
+        connections = new Semaphore(num1);
         numberOfConnections = num1;
-        numberOfDevices = num2;
-        devSemaphore = new Semaphore(numberOfConnections);
-        out = new JTextField();
-        for(int i = 0; i < devNames.length; i++)
-        {
-            String [] temp = devNames[i].split(" ");
-            Devices dev = new Devices(temp[0], temp[1], this, devSemaphore);
-            devN.add(dev);
-            dev.start();
+    }
+    
+    public int occupy(Devices dev)throws Exception {
+        connections.P(dev);
+        int i = 0;
+        for (i = 0; i < numberOfConnections; i++) {
+            if(devN[i] == null){
+                devN[i] = dev;
+                System.out.println("Connection "+ (i + 1) + ": " + dev.getDevName() + " occupied");
+                Output.append("Connection "+ (i + 1) + ": " + dev.getDevName() + " occupied\n");
+                return (i+1);
+            }
         }
+        return 0;
     }
     
-    public void occupy(Devices dev)throws Exception {
-        System.out.println("Connection "+ dev.getConnectionNumber() + ": " + dev.getDevName() + " occupied");
-    }
-    
-    public void release()
+    public void release(Devices dev)
     {
-    	counter++;
-        devSemaphore.V();
-        if(counter == numberOfDevices*2) {
-        	System.out.println("Done");
+       connections.V();
+       for (int i = 0; i < numberOfConnections; i++) {
+        if(devN[i] == dev){
+                devN[i] = null;
+            }
         }
     }
 }

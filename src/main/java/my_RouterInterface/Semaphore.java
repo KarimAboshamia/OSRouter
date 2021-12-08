@@ -4,40 +4,34 @@ import static my_RouterInterface.RouterInterface.Output;
 
 class Semaphore {
 
-	protected int connections = 0;
+	protected int connections;
         Devices dev;
-        int temp;
+        
 	protected Semaphore() {
 		connections = 0;
 	}
 
 	protected Semaphore(int initial) {
 		connections = initial;
-                temp = initial;
 	}
 
 	public synchronized void P(Devices dev)throws Exception {
-            
             connections--;
-            dev.setConnection(temp - connections);
             if (connections < 0)
             {
                 try 
                 {
                     System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting");
+                    Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
                     wait();
                 } catch (InterruptedException e) 
                 {
                     System.out.println("Exception in waiting");
                 }
             }
-            if(dev.getConnectionNumber() <= temp)
-            {
+            else {
                 System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
-            }
-            else
-            {
-                dev.setConnection(temp - connections);
+                Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
             }
         }
 
