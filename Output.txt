@@ -3,8 +3,14 @@ Connection 1: ac occupied
 Connection 1: ac login
 Connection 1: ac Performs online activity
 Connection 1: ac Logout
-(an) (ad) arrived and waiting
-Connection 0: an occupied
-Connection 0: an login
-Connection 0: an Performs online activity
-Connection 0: an Logout
+(ad) (ad) arrived
+Connection 2: ad occupied
+Connection 2: ad login
+Connection 2: ad Performs online activity
+Connection 2: ad Logout
+(ae) (ae) arrived and waiting
+Connection -1: ae occupied
+Connection -1: ae login
+Connection -1: ae Performs online activity
+Connection -1: ae Logout
+Done

@@ -35,20 +35,16 @@ public class Devices extends Thread {
     public void connect()
     {
     	System.out.println("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login");
-        Output.append("Connection "+ connectionNumber + ": "+ this.Device_Name+ " login \n");
     }
     
     public void activity()
     {
-    	System.out.println("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity");
-        Output.append("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity \n");
-        
+    	System.out.println("Connection "+ connectionNumber + ": " +this.Device_Name + " Performs online activity");        
     }
     
     public void disconnect()
     {
     	System.out.println("Connection "+ connectionNumber + ": " + this.Device_Name+ " Logout");
-        Output.append("Connection "+ connectionNumber + ": " + this.Device_Name+ " Logout \n");
         sharedRouter.release();
     }
     

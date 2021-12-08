@@ -172,11 +172,6 @@ public class RouterInterface extends javax.swing.JFrame {
 
    
     public static void main(String args[]) throws IOException {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -203,14 +198,8 @@ public class RouterInterface extends javax.swing.JFrame {
         }); 
         File file = new File("Output.txt");
         PrintStream stream = new PrintStream(file);
-        /*PrintStream out = new PrintStream(new OutputStream() {
-        @Override
-            public void write(int b) throws IOException {
-                str = String.valueOf((char)b);   
-            } 
-        });*/
-        
         System.setOut(stream);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

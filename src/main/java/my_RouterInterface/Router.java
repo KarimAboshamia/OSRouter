@@ -16,6 +16,7 @@ public class Router
     int numberOfDevices; 
     FileWriter file;
     JTextField out;
+    int counter = 0;
     
     public Router(int num1, int num2, String devNames[])throws Exception
     {
@@ -34,11 +35,14 @@ public class Router
     
     public void occupy(Devices dev)throws Exception {
         System.out.println("Connection "+ dev.getConnectionNumber() + ": " + dev.getDevName() + " occupied");
-        Output.append("Connection "+ dev.getConnectionNumber() + ": " + dev.getDevName() + " occupied\n");
     }
     
     public void release()
     {
+    	counter++;
         devSemaphore.V();
+        if(counter == numberOfDevices*2) {
+        	System.out.println("Done");
+        }
     }
 }

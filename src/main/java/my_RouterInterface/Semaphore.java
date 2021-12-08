@@ -25,18 +25,15 @@ class Semaphore {
                 try 
                 {
                     System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting");
-                    Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived and waiting\n");
                     wait();
                 } catch (InterruptedException e) 
                 {
                     System.out.println("Exception in waiting");
-                    Output.append("Exception in waiting");
                 }
             }
             if(dev.getConnectionNumber() <= temp)
             {
                 System.out.println("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived");
-                Output.append("(" + dev.getDevName() + ") (" + dev.getType() + ")" + " arrived\n");
             }
             else
             {
