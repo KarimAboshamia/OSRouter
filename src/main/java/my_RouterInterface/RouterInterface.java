@@ -153,7 +153,6 @@ public class RouterInterface extends javax.swing.JFrame {
         String text = jTextArea1.getText();
         String[] devicesNames = text.split("\\n");  
         Router myRouter = new Router(numOfRouterConnections, numOfDevices, devicesNames);
-        myRouter.occupy();
     }//GEN-LAST:event_jButton2ActionPerformed
 
    

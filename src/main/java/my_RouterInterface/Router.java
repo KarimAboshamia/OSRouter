@@ -9,7 +9,7 @@ public class Router
     Semaphore connections;
     static int dev = 0;
     int numberOfConnections=0;
-    private Semaphore devSemaphore;
+    static private Semaphore devSemaphore;
     int numberOfDevices; 
     
     public Router(int num1, int num2, String devNames[])
@@ -20,25 +20,19 @@ public class Router
             for(int i = 0; i < numberOfDevices; i++)
             {
                 String [] temp = devNames[i].split(" ");
-                Devices dev = new Devices(temp[0], temp[1], this);
+                Devices dev = new Devices(temp[0], temp[1], this, devSemaphore);
                 devN.add(dev);
                 dev.start();
             }
     }
     
-    public void occupy()
+    public void occupy(Devices dev)
     {
-       while(dev < numberOfConnections)
-       {
-           devSemaphore.P();
-           
-           dev++;
-       }
+        System.out.println(dev.getDevName() + "Occuppied");
     }
     
     public void release()
     {
         devSemaphore.V();
-        dev--;
     }
 }
